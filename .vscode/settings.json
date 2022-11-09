@@ -4,6 +4,7 @@
         "string": "cpp",
         "xstring": "cpp",
         "ostream": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "ratio": "cpp"
     }
 }
