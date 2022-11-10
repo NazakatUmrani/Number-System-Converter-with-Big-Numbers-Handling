@@ -28,19 +28,19 @@ int main(){
             cout<<"Enter a decimal number: ";
             cin>>number;
             result = dtob(number);
-            cout<<"Decimal = "<< result;
+            cout<<"Decimal = "<< result << endl;
             break;
         case 2:
             cout<<"Enter a decimal number: ";
             cin>>number;
             result = dtoo(number);
-            cout<<"Decimal = "<< result;
+            cout<<"Decimal = "<< result << endl;
             break;
         case 3:
             cout<<"Enter a decimal number: ";
             cin>>number;
             result = dtoh(number);
-            cout<<"Decimal = "<< result;
+            cout<<"Decimal = "<< result << endl;
             break;
         case 0:
             cout<<"Help";
