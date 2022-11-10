@@ -1,1 +1,3 @@
-I am working on a Number system converter, for now it will not be GUI app, and this app is coded in c++, I hope I will convert it in GUI, At this moment it is working but it will convert Decimal to Binary Numbers only, I am coding to add all conversions in it. It contains some functions which can divide large numbers, so now you can convert any number, this program does not have any limits, convert as large number as you can.
+This is a C++-written number system converter; it does not currently have a graphical user interface (GUI). It is now functioning, but it simply converts decimal to binary values. I intend to turn it to a GUI programme shortly.
+I'm building code to support all conversions, and it includes various operations that divide huge numbers.
+You can convert any number; there are no restrictions with this tool. Convert as many big numbers as you can.
