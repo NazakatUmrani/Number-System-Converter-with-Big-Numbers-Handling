@@ -6,72 +6,37 @@ using namespace std;
 //Including Header Files -- End
 
 
-//Function Declarations -- Start
-string string_divisor(string, int);
-string string_remainder(string, int);
-//Function Declarations -- End
-
-
-//Main Function -- Start
-int main(){
-    string divident;
-    int divisor;
-    cout << "Enter a divident: " ;
-    cin >> divident;
-    cout << "Enter a divisor: " ;
-    cin >> divisor;
-    cout << "Result: " << string_divisor(divident, divisor) << endl;
-}
-//Main Function -- End
-
-
 //Function Definations -- Start
-string string_divisor(string num, int base){   //num = 8888
-    string result, substrOfNum, remainder;
+string string_divisor(string num, int base){
+    string quotient, substrOfNum, remainder;
     for (int l = 0; l < num.length(); l++)
     {
         substrOfNum = remainder + num[l];
-        result = result + to_string(stoi(substrOfNum)/base);
-        if (result == "0")
+        quotient = quotient + to_string(stoi(substrOfNum)/base);
+        if (quotient == "0")
         {
-            result = "";
+            quotient = "";
         }
-        
-        cout << result + to_string(stoi(substrOfNum)/base) << endl;
         remainder = to_string(stoi(substrOfNum)%base);
-
     }
-    return result;
+    return quotient;
 }
 
-
-//int size = 8 for this function
 string string_remainder(string num, int base){
-    string num_temp, result;
-    int length = ceil(num.length()/8.0);
-    int count = 0;
-    result = "0";
-    for (int i = 0; i < length; i++)
+    string quotient, substrOfNum, remainder;
+    for (int k = 0; k < num.length(); k++)
     {
-        num_temp = "";
-        for (int j = 0; j < 8; j++)
+        substrOfNum = remainder + num[k];
+        quotient = quotient + to_string(stoi(substrOfNum)/base);
+        if (quotient == "0")
         {
-            if (count>=num.length())
-            {
-                continue;
-            }
-            num_temp += num[count];     
-            count++;
+            quotient = "";
         }
-        for (int k = 0; k < num_temp.length(); k++)
-        {
-            result = to_string(stoi(result)*10);
-
-        }
-        result = to_string((stoi(result) + stoi(num_temp)) % base);
+        remainder = to_string(stoi(substrOfNum)%base);
     }
-    return result;
+    return remainder;
 }
+
 
 string dtob(string d){
     int count;
@@ -81,7 +46,7 @@ string dtob(string d){
     for (int i = 0; i >= 0; i++)
     {
         count++;
-        cout<<string_divisor(d,2)<<"\t"<<stoi(string_remainder(d,2))<<"\t"<<(i+1)<<endl;
+        //cout<<string_divisor(d,2)<<"\t"<<stoi(string_remainder(d,2))<<"\t"<<(i+1)<<endl;
         a[i]=stoi(string_remainder(d,2));
         d = string_divisor(d,2);
         if (d.length()<2)
@@ -121,7 +86,7 @@ string dtoh(string d){
     for (int i = 0; i >= 0; i++)
     {
         count++;
-        cout<<string_divisor(d,16)<<"\t"<<stoi(string_remainder(d,16))<<"\t"<<(i+1)<<endl;
+        //cout<<string_divisor(d,16)<<"\t"<<stoi(string_remainder(d,16))<<"\t"<<(i+1)<<endl;
         a[i]=string_remainder(d,16);
         if (a[i] == "10")
         {
@@ -196,7 +161,7 @@ string dtoo(string d){
     for (int i = 0; i >= 0; i++)
     {
         count++;
-        cout<<string_divisor(d,8)<<"\t"<<stoi(string_remainder(d,8))<<endl;
+        //cout<<string_divisor(d,8)<<"\t"<<stoi(string_remainder(d,8))<<endl;
         a[i]=stoi(string_remainder(d,8));
         d = string_divisor(d,8);
         if (d.length()<2)
