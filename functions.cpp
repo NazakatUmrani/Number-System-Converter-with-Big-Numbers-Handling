@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <algorithm>
 using namespace std;
 //Including Header Files -- End
 
@@ -37,6 +38,115 @@ string string_remainder(string num, int base){
     return remainder;
 }
 
+string string_plus(string str1, string str2){
+    int length, zeroscount, str1len, str2len;
+    str1len = str1.length();
+    str2len = str2.length();
+    string result, carry, str1reverse, str2reverse;
+    if (str2len < str1len)
+    {
+        length = str1len;
+        zeroscount = (length-str2len);
+        for (int w = 0; w < zeroscount; w++)
+        {
+            str2 = "0" + str2;
+        }
+    }
+    else if (str1len < str2len)
+    {
+        length = str2len;
+        zeroscount = (length-str1len);
+        for (int o = 0; o < zeroscount; o++)
+        {
+            str1 = "0" + str1;
+        }
+    }
+    else
+    {
+        length = str1.length();
+    }
+    reverse(str1.begin(), str1.end());
+    reverse(str2.begin(), str2.end());   
+    carry = "0";
+    for (int o = 0; o < length; o++)
+    {
+        string temp1, temp2, result_temp;
+        temp1 = str1[o];
+        temp2 = str2[o];
+        result_temp = to_string(stoi(carry) + stoi(temp1) + stoi(temp2));
+        if (result_temp.length() > 1)
+        {
+            carry = result_temp[0];
+            result += result_temp[1];
+        }
+        else
+        {
+            carry = "0";
+            result += result_temp;
+        }
+        if (o==length && carry != "" && carry != "0")
+        {
+            result += carry;
+        }
+    }    
+    reverse(result.begin(), result.end());
+    return result;
+}
+
+string string_minus(string str1, string str2){
+    int length, zeroscount, str1len, str2len;
+    str1len = str1.length();
+    str2len = str2.length();
+    string result, str1reverse, str2reverse;
+    if (str2len < str1len)
+    {
+        length = str1len;
+        zeroscount = (length-str2len);
+        for (int w = 0; w < zeroscount; w++)
+        {
+            str2 = "0" + str2;
+        }
+    }
+    else if (str1len < str2len)
+    {
+        length = str2len;
+        zeroscount = (length-str1len);
+        for (int o = 0; o < zeroscount; o++)
+        {
+            str1 = "0" + str1;
+        }
+    }
+    else
+    {
+        length = str1.length();
+    }
+    reverse(str1.begin(), str1.end());
+    reverse(str2.begin(), str2.end());
+    cout << endl << str1 << endl;
+    cout << str2 << endl;
+    for (int o = 0; o < length; o++)
+    {
+        string temp1, temp2, result_temp;
+        temp1 = str1[o];
+        temp2 = str2[o];
+        int temp1int, temp2int;
+        temp1int = stoi(temp1);
+        temp2int = stoi(temp2);
+        if (temp1int < temp2int)
+        {
+            string temp_carry;
+            temp_carry = str1[o+1];
+            temp1 = '1' + temp1;
+            temp_carry = to_string(stoi(temp_carry) - 1);
+            str1[o+1] = temp_carry[0];
+        }
+        
+        result_temp = to_string(stoi(temp1) - stoi(temp2));
+        result += result_temp;
+    }
+    reverse(result.begin(), result.end());
+    return result;
+}
 
 string dtob(string d){
     int count;
@@ -193,4 +303,23 @@ string dtoo(string d){
     }
     return result;
 }
+
+string btod(string d){ //issues
+    string temp, result;
+    int power, length;
+    length = d.length();
+    for (int s = 0; s < length; s++)
+    {
+        temp = d[s];
+        power = length - s;
+        result += to_string((stoi(temp) * pow(2,power)));
+        cout << temp << "x 2^" << power << "\t" << result << " " << s << endl;
+    }
+    cout << pow (2,5);
+    return result;
+}
+
+
+
+
 //Function Definations -- End

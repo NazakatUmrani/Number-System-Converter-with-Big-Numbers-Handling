@@ -10,10 +10,11 @@ int main(){
     string number,result;
     int choice;
     cout<<"----Number System Converter----"<<endl;
-    cout<<"0 --for help"<<endl;
-    cout<<"1 --for decimal to binary"<<endl;
-    cout<<"2 --for decimal to octal"<<endl;
-    cout<<"3 --for decimal to hexadecimal"<<endl;
+    cout<<"0 -- for help"<<endl;
+    cout<<"1 -- for decimal to binary"<<endl;
+    cout<<"2 -- for decimal to octal"<<endl;
+    cout<<"3 -- for decimal to hexadecimal"<<endl;
+    cout<<"4 -- for binary to decimal"<<endl;
     cout<<"Enter your choice: ";
     cin>>choice;    
 
@@ -22,19 +23,25 @@ int main(){
             cout<<"Enter a decimal number: ";
             cin>>number;
             result = dtob(number);
-            cout<<"Decimal = "<< result << endl;
+            cout << "(" << number << ")10 = ("<< result << ")2" << endl;
             break;
         case 2:
             cout<<"Enter a decimal number: ";
             cin>>number;
             result = dtoo(number);
-            cout<<"Decimal = "<< result << endl;
+            cout << "(" << number << ")10 = ("<< result << ")8" << endl;
             break;
         case 3:
             cout<<"Enter a decimal number: ";
             cin>>number;
             result = dtoh(number);
-            cout<<"Decimal = "<< result << endl;
+            cout << "(" << number << ")10 = ("<< result << ")16" << endl;
+            break;
+        case 4:
+            cout<<"Enter a binary number: ";
+            cin>>number;
+            result = btod(number);
+            cout << "(" << number << ")2 = ("<< result << ")10" << endl;
             break;
         case 0:
             cout<<"Help";
