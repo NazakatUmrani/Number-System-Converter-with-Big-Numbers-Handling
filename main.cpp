@@ -16,7 +16,8 @@ int main(){
     cout<<"2 -- for Decimal to Octal"<<endl;
     cout<<"3 -- for Decimal to Hexadecimal"<<endl;
     cout<<"4 -- for Binary to Decimal"<<endl;
-    cout<<"4 -- for Octal to Decimal"<<endl;
+    cout<<"5 -- for Octal to Decimal"<<endl;
+    cout<<"6 -- for Hexadecimal to Decimal"<<endl;
     cout<<"Enter your choice: ";
     cin>>choice;    
 
@@ -50,6 +51,12 @@ int main(){
             cin>>number;
             result = otod(number);
             cout << "(" << number << ")8 = ("<< result << ")10" << endl;
+            break;
+        case 6:
+            cout<<"Enter a Hexadecimal Number: ";
+            cin>>number;
+            result = htod(number);
+            cout << "(" << number << ")16 = ("<< result << ")10" << endl;
             break;
         case 0:
             cout<<"Help";

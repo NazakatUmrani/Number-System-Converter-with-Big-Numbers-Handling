@@ -392,7 +392,7 @@ string btod(string d){
     }
     return result;
 }
-
+    
 string otod(string d){
     string temp, result = "", power;
     int length;
@@ -402,6 +402,50 @@ string otod(string d){
         temp = d[s];
         power = to_string(length - (s+1));
         result = string_plus(result, (string_multiplication(temp, string_power("8",power))));
+        cout << result << endl;
+    }
+    return result;
+}
+
+string htod(string d){
+    string temp, result = "", power;
+    int length;
+    length = d.size();
+    for (int s = 0; s < length; s++)
+    {
+        if (d[s] == 'A' || d[s] == 'a' || d[s] == 'B' || d[s] == 'b' || d[s] == 'C' || d[s] == 'c' || d[s] == 'D' || d[s] == 'd' || d[s] == 'E' || d[s] == 'e' || d[s] == 'F' || d[s] == 'f')
+        {
+            if (d[s] == 'A' || d[s] == 'a')
+            {
+                temp = "10";
+            }
+            else if (d[s] == 'B' || d[s] == 'b')
+            {
+                temp = "11";
+            }
+            else if (d[s] == 'C' || d[s] == 'c')
+            {
+                temp = "12";
+            }
+            else if (d[s] == 'D' || d[s] == 'd')
+            {
+                temp = "13";
+            }
+            else if (d[s] == 'E' || d[s] == 'e')
+            {
+                temp = "14";
+            }
+            else if (d[s] == 'F' || d[s] == 'f')
+            {
+                temp = "15";
+            }
+        }
+        else
+        {
+            temp = d[s];
+        }
+        power = to_string(length - (s+1));
+        result = string_plus(result, (string_multiplication(temp, string_power("16",power))));
         cout << result << endl;
     }
     return result;
