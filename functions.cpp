@@ -6,8 +6,24 @@
 using namespace std;
 //Including Header Files -- End
 
+//Function Declarations -- Start
+string dtob(string d);
+string dtoh(string d);
+string dtoo(string d);
+string btod(string d);
+string otod(string d);
+
+string string_divisor(string, int);
+string string_remainder(string, int);
+string string_multiplication(string, string);
+string string_power(string, string);
+string string_plus(string, string);
+string string_minus(string, string);
+//Function Declarations -- Start
 
 //Function Definations -- Start
+
+//Big Numbers Arithmetic Functions -- Start
 string string_divisor(string num, int base){
     string quotient, substrOfNum, remainder;
     for (int l = 0; l < num.length(); l++)
@@ -84,12 +100,69 @@ string string_plus(string str1, string str2){
             carry = "0";
             result += result_temp;
         }
-        if (o==length && carry != "" && carry != "0")
+        if (o==(length-1) && carry != "" && carry != "0")
         {
             result += carry;
         }
     }    
     reverse(result.begin(), result.end());
+    return result;
+}
+
+string string_multiplication(string number, string multiplier){
+    string ans = "0", result;
+    int carry;
+    reverse(number.begin(), number.end());
+    reverse(multiplier.begin(),multiplier.end());
+    for (int j = 0; j < multiplier.size(); j++)
+    {   
+        result = "";
+        carry = 0;
+        for (int i = 0; i < number.size(); i++)
+        {
+            string tempnumber, tempmultiplier, tempans;
+            tempnumber = number[i];
+            tempmultiplier = multiplier[j];
+            tempans = to_string(carry + (stoi(tempnumber) * stoi(tempmultiplier)));
+            if (tempans.size() > 1)
+            {
+                string strtoint;
+                strtoint = tempans[0];
+                carry = stoi(strtoint);
+                result += tempans[1];
+            }
+            else
+            {
+                result += tempans[0];
+                carry = 0;
+            }
+            if (i == (number.size()-1) && carry != 0)
+            {
+                result += to_string(carry);
+            }
+        }
+        reverse(result.begin(), result.end());
+        for (int k = 0; k < j; k++)
+        {
+            result += "0";
+        }
+        ans = string_plus(ans, result);
+    }
+    return ans;
+}
+
+string string_power(string number, string power){
+    string i = "1", result = number;
+    while (i != power && stoi(power) > 0)
+    {
+        result = string_multiplication(result,number);
+        i = string_plus(i, "1");
+    }
+    if (power == "0")
+    {
+        return "1";
+    }
+    
     return result;
 }
 
@@ -147,6 +220,8 @@ string string_minus(string str1, string str2){
     reverse(result.begin(), result.end());
     return result;
 }
+
+//Big Numbers Arithmetic Functions -- End
 
 string dtob(string d){
     int count;
@@ -304,22 +379,31 @@ string dtoo(string d){
     return result;
 }
 
-string btod(string d){ //issues
-    string temp, result;
-    int power, length;
-    length = d.length();
+string btod(string d){
+    string temp, result = "", power;
+    int length;
+    length = d.size();
     for (int s = 0; s < length; s++)
     {
         temp = d[s];
-        power = length - s;
-        result += to_string((stoi(temp) * pow(2,power)));
-        cout << temp << "x 2^" << power << "\t" << result << " " << s << endl;
+        power = to_string(length - (s+1));
+        result = string_plus(result, (string_multiplication(temp, string_power("2",power))));
+        cout << result << endl;
     }
-    cout << pow (2,5);
     return result;
 }
 
-
-
-
+string otod(string d){
+    string temp, result = "", power;
+    int length;
+    length = d.size();
+    for (int s = 0; s < length; s++)
+    {
+        temp = d[s];
+        power = to_string(length - (s+1));
+        result = string_plus(result, (string_multiplication(temp, string_power("8",power))));
+        cout << result << endl;
+    }
+    return result;
+}
 //Function Definations -- End
