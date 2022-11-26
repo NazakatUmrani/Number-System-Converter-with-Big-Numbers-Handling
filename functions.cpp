@@ -12,6 +12,13 @@ string dtoh(string d);
 string dtoo(string d);
 string btod(string d);
 string otod(string d);
+string htod(string d);
+string btoo(string d);
+string btoh(string d);
+string otob(string d);
+string btoh(string d);
+string htob(string d);
+string htoo(string d);
 
 string string_divisor(string, int);
 string string_remainder(string, int);
@@ -162,7 +169,6 @@ string string_power(string number, string power){
     {
         return "1";
     }
-    
     return result;
 }
 
@@ -195,8 +201,6 @@ string string_minus(string str1, string str2){
     }
     reverse(str1.begin(), str1.end());
     reverse(str2.begin(), str2.end());
-    cout << endl << str1 << endl;
-    cout << str2 << endl;
     for (int o = 0; o < length; o++)
     {
         string temp1, temp2, result_temp;
@@ -271,7 +275,6 @@ string dtoh(string d){
     for (int i = 0; i >= 0; i++)
     {
         count++;
-        //cout<<string_divisor(d,16)<<"\t"<<stoi(string_remainder(d,16))<<"\t"<<(i+1)<<endl;
         a[i]=string_remainder(d,16);
         if (a[i] == "10")
         {
@@ -346,7 +349,6 @@ string dtoo(string d){
     for (int i = 0; i >= 0; i++)
     {
         count++;
-        //cout<<string_divisor(d,8)<<"\t"<<stoi(string_remainder(d,8))<<endl;
         a[i]=stoi(string_remainder(d,8));
         d = string_divisor(d,8);
         if (d.length()<2)
@@ -357,7 +359,6 @@ string dtoo(string d){
                 break;
             }
         }
-        
     }
     for (int j = count; j > 0; j--)
     {
@@ -388,7 +389,6 @@ string btod(string d){
         temp = d[s];
         power = to_string(length - (s+1));
         result = string_plus(result, (string_multiplication(temp, string_power("2",power))));
-        cout << result << endl;
     }
     return result;
 }
@@ -402,7 +402,6 @@ string otod(string d){
         temp = d[s];
         power = to_string(length - (s+1));
         result = string_plus(result, (string_multiplication(temp, string_power("8",power))));
-        cout << result << endl;
     }
     return result;
 }
@@ -446,8 +445,31 @@ string htod(string d){
         }
         power = to_string(length - (s+1));
         result = string_plus(result, (string_multiplication(temp, string_power("16",power))));
-        cout << result << endl;
     }
     return result;
+}
+
+string btoo(string d){
+    return dtoo(btod(d));
+}
+
+string btoh(string d){
+    return dtoh(btod(d));
+}
+
+string otob(string d){
+    return dtob(otod(d));
+}
+
+string otoh(string d){
+    return dtoh(otod(d));
+}
+
+string htob(string d){
+    return dtob(htod(d));
+}
+
+string htoo(string d){
+    return dtoo(htod(d));
 }
 //Function Definations -- End
