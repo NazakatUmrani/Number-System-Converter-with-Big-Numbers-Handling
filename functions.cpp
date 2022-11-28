@@ -16,7 +16,7 @@ string htod(string d);
 string btoo(string d);
 string btoh(string d);
 string otob(string d);
-string btoh(string d);
+string otoh(string d);
 string htob(string d);
 string htoo(string d);
 
@@ -117,45 +117,51 @@ string string_plus(string str1, string str2){
 }
 
 string string_multiplication(string number, string multiplier){
-    string ans = "0", result;
-    int carry;
-    reverse(number.begin(), number.end());
-    reverse(multiplier.begin(),multiplier.end());
-    for (int j = 0; j < multiplier.size(); j++)
-    {   
-        result = "";
-        carry = 0;
-        for (int i = 0; i < number.size(); i++)
-        {
-            string tempnumber, tempmultiplier, tempans;
-            tempnumber = number[i];
-            tempmultiplier = multiplier[j];
-            tempans = to_string(carry + (stoi(tempnumber) * stoi(tempmultiplier)));
-            if (tempans.size() > 1)
-            {
-                string strtoint;
-                strtoint = tempans[0];
-                carry = stoi(strtoint);
-                result += tempans[1];
-            }
-            else
-            {
-                result += tempans[0];
-                carry = 0;
-            }
-            if (i == (number.size()-1) && carry != 0)
-            {
-                result += to_string(carry);
-            }
-        }
-        reverse(result.begin(), result.end());
-        for (int k = 0; k < j; k++)
-        {
-            result += "0";
-        }
-        ans = string_plus(ans, result);
+    if (number == "0" || multiplier == "0")
+    {
+        return "0";
     }
-    return ans;
+    else{
+        string ans = "0", result;
+        int carry;
+        reverse(number.begin(), number.end());
+        reverse(multiplier.begin(),multiplier.end());
+        for (int j = 0; j < multiplier.size(); j++)
+        {   
+            result = "";
+            carry = 0;
+            for (int i = 0; i < number.size(); i++)
+            {
+                string tempnumber, tempmultiplier, tempans;
+                tempnumber = number[i];
+                tempmultiplier = multiplier[j];
+                tempans = to_string(carry + (stoi(tempnumber) * stoi(tempmultiplier)));
+                if (tempans.size() > 1)
+                {
+                    string strtoint;
+                    strtoint = tempans[0];
+                    carry = stoi(strtoint);
+                    result += tempans[1];
+                }
+                else
+                {
+                    result += tempans[0];
+                    carry = 0;
+                }
+                if (i == (number.size()-1) && carry != 0)
+                {
+                    result += to_string(carry);
+                }
+            }
+            reverse(result.begin(), result.end());
+            for (int k = 0; k < j; k++)
+            {
+                result += "0";
+            }
+            ans = string_plus(ans, result);
+        }
+        return ans;
+    }
 }
 
 string string_power(string number, string power){
@@ -226,7 +232,6 @@ string string_minus(string str1, string str2){
 }
 
 //Big Numbers Arithmetic Functions -- End
-
 string dtob(string d){
     int count;
     string result;
