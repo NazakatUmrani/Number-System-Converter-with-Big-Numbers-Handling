@@ -1,4 +1,6 @@
 .vscode/
 test.cpp
 test
+math_funcs
+math_funcs.cpp
 tempCodeRunnerFile.cpp
