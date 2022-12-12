@@ -8,103 +8,145 @@
 using namespace std;
 
 int main(){
+    system("clear");
     string number,result;
-    int choice;
-    cout<<"----Number System Converter----"<<endl;
-    cout<<"0  -- for help"<<endl;
-    cout<<"1  -- for Decimal     to  Binary"<<endl;
-    cout<<"2  -- for Decimal     to  Octal"<<endl;
-    cout<<"3  -- for Decimal     to  Hexadecimal"<<endl;
-    cout<<"4  -- for Binary      to  Decimal"<<endl;
-    cout<<"5  -- for Octal       to  Decimal"<<endl;
-    cout<<"6  -- for Hexadecimal to  Decimal"<<endl;
-    cout<<"7  -- for Binary      to  Octal"<<endl;
-    cout<<"8  -- for Binary      to  Hexadecimal"<<endl;
-    cout<<"9  -- for Octal       to  Binary"<<endl;
-    cout<<"10 -- for Octal       to  Hexadecimal"<<endl;
-    cout<<"11 -- for Hexadecimal to  Octal"<<endl;
-    cout<<"12 -- for Hexadecimal to  Binary"<<endl;
-    cout<<"Enter your choice: ";
-    cin>>choice;    
-
-    switch(choice){
-        case 1:
-            cout<<"Enter a Decimal number: ";
-            cin>>number;
-            result = dtob(number);
-            cout << "(" << number << ")10 = ("<< result << ")2" << endl;
-            break;
-        case 2:
-            cout<<"Enter a Decimal Number: ";
-            cin>>number;
-            result = dtoo(number);
-            cout << "(" << number << ")10 = ("<< result << ")8" << endl;
-            break;
-        case 3:
-            cout<<"Enter a Decimal Number: ";
-            cin>>number;
-            result = dtoh(number);
-            cout << "(" << number << ")10 = ("<< result << ")16" << endl;
-            break;
-        case 4:
-            cout<<"Enter a Binary Number: ";
-            cin>>number;
-            result = btod(number);
-            cout << "(" << number << ")2 = ("<< result << ")10" << endl;
-            break;
-        case 5:
-            cout<<"Enter a Octal Number: ";
-            cin>>number;
-            result = otod(number);
-            cout << "(" << number << ")8 = ("<< result << ")10" << endl;
-            break;
-        case 6:
-            cout<<"Enter a Hexadecimal Number: ";
-            cin>>number;
-            result = htod(number);
-            cout << "(" << number << ")16 = ("<< result << ")10" << endl;
-            break;
-        case 7:
-            cout<<"Enter a Binary Number: ";
-            cin>>number;
-            result = btoo(number);
-            cout << "(" << number << ")2 = ("<< result << ")8" << endl;
-            break;
-        case 8:
-            cout<<"Enter a Binary Number: ";
-            cin>>number;
-            result = btoh(number);
-            cout << "(" << number << ")2 = ("<< result << ")16" << endl;
-            break;
-        case 9:
-            cout<<"Enter a Octal Number: ";
-            cin>>number;
-            result = otob(number);
-            cout << "(" << number << ")8 = ("<< result << ")2" << endl;
-            break;
-        case 10:
-            cout<<"Enter a Octal Number: ";
-            cin>>number;
-            result = otoh(number);
-            cout << "(" << number << ")8 = ("<< result << ")16" << endl;
-            break;
-        case 11:
-            cout<<"Enter a Hexadecimal Number: ";
-            cin>>number;
-            result = htoo(number);
-            cout << "(" << number << ")16 = ("<< result << ")8" << endl;
-            break;
-        case 12:
-            cout<<"Enter a Hexadecimal Number: ";
-            cin>>number;
-            result = htob(number);
-            cout << "(" << number << ")16 = ("<< result << ")2" << endl;
-            break;
-        case 0:
-            cout<<"Help";
-            break;
-        default:
-            cout<<"Invalid Choice";
-    } 
+    int choice = 0;
+    char run_again = 'y';
+    cout<<"--------Number System Converter--------"<<endl;
+    help_menu();
+    while (run_again == 'y'){
+        cout<<"Enter your choice: ";
+        cin>>choice;
+        switch(choice){
+            case 1:
+                cout<<"Enter a Decimal number: ";
+                cin>>number;
+                if (is_decimal(number) == false){
+                    cout << "Entered Value is not a Decimal Number...!" << endl;
+                    break;
+                }
+                result = dtob(number);
+                cout << "(" << number << ")10 = ("<< result << ")2" << endl;
+                break;
+            case 2:
+                cout<<"Enter a Decimal Number: ";
+                cin>>number;
+                if (is_decimal(number) == false){
+                    cout << "Entered Value is not a Decimal Number...!" << endl;
+                    break;
+                }
+                result = dtoo(number);
+                cout << "(" << number << ")10 = ("<< result << ")8" << endl;
+                break;
+            case 3:
+                cout<<"Enter a Decimal Number: ";
+                cin>>number;
+                if (is_decimal(number) == false){
+                    cout << "Entered Value is not a Decimal Number...!" << endl;
+                    break;
+                }
+                result = dtoh(number);
+                cout << "(" << number << ")10 = ("<< result << ")16" << endl;
+                break;
+            case 4:
+                cout<<"Enter a Binary Number: ";
+                cin>>number;
+                if (is_binary(number) == false){
+                    cout << "Entered Value is not a Binary Number...!" << endl;
+                    break;
+                }
+                result = btod(number);
+                cout << "(" << number << ")2 = ("<< result << ")10" << endl;
+                break;
+            case 5:
+                cout<<"Enter a Octal Number: ";
+                cin>>number;
+                if (is_octal(number) == false){
+                    cout << "Entered Value is not a Octal Number...!" << endl;
+                    break;
+                }
+                result = otod(number);
+                cout << "(" << number << ")8 = ("<< result << ")10" << endl;
+                break;
+            case 6:
+                cout<<"Enter a Hexadecimal Number: ";
+                cin>>number;
+                if (is_hexadecimal(number) == false){
+                    cout << "Entered Value is not a Hexadecimal Number...!" << endl;
+                    break;
+                }
+                result = htod(number);
+                cout << "(" << number << ")16 = ("<< result << ")10" << endl;
+                break;
+            case 7:
+                cout<<"Enter a Binary Number: ";
+                cin>>number;
+                if (is_binary(number) == false){
+                    cout << "Entered Value is not a Binary Number...!" << endl;
+                    break;
+                }
+                result = btoo(number);
+                cout << "(" << number << ")2 = ("<< result << ")8" << endl;
+                break;
+            case 8:
+                cout<<"Enter a Binary Number: ";
+                cin>>number;
+                if (is_binary(number) == false){
+                    cout << "Entered Value is not a Binary Number...!" << endl;
+                    break;
+                }
+                result = btoh(number);
+                cout << "(" << number << ")2 = ("<< result << ")16" << endl;
+                break;
+            case 9:
+                cout<<"Enter a Octal Number: ";
+                cin>>number;
+                if (is_octal(number) == false){
+                    cout << "Entered Value is not a Octal Number...!" << endl;
+                    break;
+                }
+                result = otob(number);
+                cout << "(" << number << ")8 = ("<< result << ")2" << endl;
+                break;
+            case 10:
+                cout<<"Enter a Octal Number: ";
+                cin>>number;
+                if (is_octal(number) == false){
+                    cout << "Entered Value is not a Octal Number...!" << endl;
+                    break;
+                }
+                result = otoh(number);
+                cout << "(" << number << ")8 = ("<< result << ")16" << endl;
+                break;
+            case 11:
+                cout<<"Enter a Hexadecimal Number: ";
+                cin>>number;
+                if (is_hexadecimal(number) == false){
+                    cout << "Entered Value is not a Hexadecimal Number...!" << endl;
+                    break;
+                }
+                result = htoo(number);
+                cout << "(" << number << ")16 = ("<< result << ")8" << endl;
+                break;
+            case 12:
+                cout<<"Enter a Hexadecimal Number: ";
+                cin>>number;
+                if (is_octal(number) == false){
+                    cout << "Entered Value is not a Hexadecimal Number...!" << endl;
+                    break;
+                }
+                result = htob(number);
+                cout << "(" << number << ")16 = ("<< result << ")2" << endl;
+                break;
+            case 0:
+                system("clear");
+                help_menu();
+                continue;
+            default:
+                cout<<"Invalid Choice" << endl;
+        }
+        cout << "Do you want to perform conversion again? (y or n): ";
+        cin >> run_again;
+    }
     return 0;
 }

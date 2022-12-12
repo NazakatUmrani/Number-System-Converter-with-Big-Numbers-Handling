@@ -28,6 +28,13 @@ string string_multiplication(string, string);
 string string_power(string, string);
 string string_max(string, string);
 string string_trimmer(string);
+
+bool is_decimal(string);
+bool is_binary(string);
+bool is_octal(string);
+bool is_hexadecimal(string);
+
+void help_menu(void);
 //Function Declarations -- Start
 
 //Function Definations -- Start
@@ -568,4 +575,76 @@ string htoo(string d){
     return dtoo(htod(d));
 }
 
+bool is_decimal(string str){
+    bool tf = true;
+    for (int i = 0; i < str.size(); i++)
+    {
+        if (str[i] == '0' || str[i] == '1' || str[i] == '2' || str[i] == '3' || str[i] == '4' || str[i] == '5' || str[i] == '6' || str[i] == '7' || str[i] == '8' || str[i] == '9')
+        {
+            continue;
+        }
+        tf = false;
+        break;
+    }
+    return tf;
+}
+
+bool is_binary(string str){
+    bool tf;
+    for (int i = 0; i < str.size(); i++)
+    {
+    if (str[i] == '0' || str[i] == '1')
+        {
+            continue;
+        }
+        tf = false;
+        break;
+    }
+    return tf;
+}
+
+bool is_octal(string str){
+    bool tf;
+    for (int i = 0; i < str.size(); i++)
+    {
+    if (str[i] == '0' || str[i] == '1' || str[i] == '2' || str[i] == '3' || str[i] == '4' || str[i] == '5' || str[i] == '6' || str[i] == '7')
+        {
+            continue;
+        }
+        tf = false;
+        break;
+    }
+    return tf;
+}
+
+bool is_hexadecimal(string str){
+    bool tf;
+    for (int i = 0; i < str.size(); i++)
+    {
+    if (str[i] == '0' || str[i] == '1' || str[i] == '2' || str[i] == '3' || str[i] == '4' || str[i] == '5' || str[i] == '6' || str[i] == '7' || str[i] == '8' || str[i] == '9' || str[i] == 'A' || str[i] == 'a' || str[i] == 'B' || str[i] == 'b' || str[i] == 'C' || str[i] == 'c' || str[i] == 'D' || str[i] == 'd' || str[i] == 'E' || str[i] == 'e' ||  str[i] == 'F' || str[i] == 'f')
+        {
+            continue;
+        }
+        tf = false;
+        break;
+    }
+    return tf;
+}
+
+void help_menu(){
+    cout<<"---------------Help Menu---------------"<<endl;
+    cout<<" 0 -- for this Help Menu"<<endl;
+    cout<<" 1 -- for Decimal     to  Binary"<<endl;
+    cout<<" 2 -- for Decimal     to  Octal"<<endl;
+    cout<<" 3 -- for Decimal     to  Hexadecimal"<<endl;
+    cout<<" 4 -- for Binary      to  Decimal"<<endl;
+    cout<<" 5 -- for Octal       to  Decimal"<<endl;
+    cout<<" 6 -- for Hexadecimal to  Decimal"<<endl;
+    cout<<" 7 -- for Binary      to  Octal"<<endl;
+    cout<<" 8 -- for Binary      to  Hexadecimal"<<endl;
+    cout<<" 9 -- for Octal       to  Binary"<<endl;
+    cout<<"10 -- for Octal       to  Hexadecimal"<<endl;
+    cout<<"11 -- for Hexadecimal to  Octal"<<endl;
+    cout<<"12 -- for Hexadecimal to  Binary"<<endl;
+}
 //Function Definations -- End
