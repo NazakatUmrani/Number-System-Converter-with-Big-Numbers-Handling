@@ -141,7 +141,7 @@ int main(){
         else if(choice == "12"){
             cout<<"Enter a Hexadecimal Number: ";
             cin>>number;
-            if (is_octal(number) == false){
+            if (is_hexadecimal(number) == false){
                 cout << "Entered Value is not a Hexadecimal Number...!" << endl;
             }
             else{
