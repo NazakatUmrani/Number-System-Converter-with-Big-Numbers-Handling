@@ -1,19 +1,15 @@
 #include "NumberSystem.hpp"
 void Number_System :: dtob (){
-    int count;
     string a;
     a = "";
-    count=0;
     for (int i = 0; i >= 0; i++)
     {
-        count++;
         a += string_remainder(numbercopy,"2");
         numbercopy = string_divisor(numbercopy,"2");
         if (numbercopy.length()<2)
         {
             if(string_max(numbercopy, "2") == "2" && numbercopy != "2"){
                 a += numbercopy;
-                count++;
                 break;
             }
         }
@@ -24,13 +20,10 @@ void Number_System :: dtob (){
 }
 
 void  Number_System :: dtoh (){
-    int count;
     string temp;
     string a = "";
-    count=0;
     for (int i = 0; i >= 0; i++)
     {
-        count++;
         temp = string_remainder(numbercopy,"16");
         if (temp == "10")
         {
@@ -64,7 +57,6 @@ void  Number_System :: dtoh (){
         if (numbercopy.length()<3)
         {
             if(stoi(numbercopy) < 16){
-                count++;
                 temp = numbercopy;
                 if (temp == "10")
                 {
@@ -103,20 +95,16 @@ void  Number_System :: dtoh (){
 }
 
 void  Number_System :: dtoo (){
-    int count;
     string a;
     a = "";
-    count=0;
     for (int i = 0; i >= 0; i++)
     {
-        count++;
         a += string_remainder(numbercopy,"8");
         numbercopy = string_divisor(numbercopy,"8");
         if (numbercopy.length()<2)
         {
             if(string_max(numbercopy,"8") == "8" && numbercopy != "8"){
                 a += numbercopy;
-                count++;
                 break;
             }
         }

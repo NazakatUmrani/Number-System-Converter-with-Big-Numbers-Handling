@@ -1,7 +1,7 @@
 #include "BigNumbersArithematic.hpp"
 string BigNumbersArithematic :: string_plus(string str1, string str2){
     int length, zeroscount, str1len, str2len;
-    string result, carry, str1reverse, str2reverse;
+    string result, carry;
     if (str1 == "0" || str2 == "0")
     {
         if (str1 == "0")
@@ -178,7 +178,7 @@ string BigNumbersArithematic :: string_minus(string str1, string str2){
 }
 
 string BigNumbersArithematic :: string_max(string str1, string str2){
-    string test, max;
+    string max;
     str1 = string_trimmer(str1);
     str2 = string_trimmer(str2);
     if (str1.size() > str2.size()){
